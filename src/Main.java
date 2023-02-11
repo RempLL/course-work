@@ -18,44 +18,60 @@ public class Main {
         System.out.println(employee[0].getFio());
         System.out.println(employee[0].getId());
         System.out.println(employee[0].getSalary());
-        System.out.println();
 
         //Сеттеры
         employee[7].setDepartment(4);
         employee[9].setSalary(120000);
 
         //Получить список всех сотрудников со всеми имеющимися по ним данными
-        SettingsEmployee.soutEmployee(employee);
-        System.out.println();
+        EmployeeBook.soutEmployee(employee);
 
         //Посчитать сумму затрат на зарплаты в месяц.
-        System.out.println(SettingsEmployee.calculationMonthlySalary(employee));
-        System.out.println();
+        System.out.println(EmployeeBook.calculationMonthlySalaryAll(employee));
 
         //Найти сотрудника с минимальной зарплатой.
-        for (Employee element : employee) {
-            if (element.getSalary() == SettingsEmployee.findMinimumSalary(employee)) {
-                System.out.println(element.getFio());
-            }
-        }
-        System.out.println();
+        System.out.println(EmployeeBook.findEmployeeMinSalaryAll(employee).getFio());
 
         //Найти сотрудника с максимальной зарплатой.
-        for (Employee item : employee) {
-            if (item.getSalary() == SettingsEmployee.findMaximumSalary(employee)) {
-                System.out.println(item.getFio());
-            }
-        }
-        System.out.println();
+        System.out.println(EmployeeBook.findEmployeeMaxSalaryAll(employee).getFio());
 
         //Подсчитать среднее значение зарплат.
-        System.out.println(SettingsEmployee.averageValueSalary(employee));
-        System.out.println();
+        System.out.println(EmployeeBook.averageValueSalaryAll(employee));
 
         //Получить Ф. И. О. всех сотрудников.
         for (Employee value : employee) {
             System.out.println(value.getFio());
         }
+        System.out.println("Повышенная сложность:");
+        //Повышенная сложность
+        //Проиндексировать зарплату.
+        EmployeeBook.indexSalaryAll(employee,10);
+        EmployeeBook.soutEmployee(employee);
 
+        //Параметр номер отдела.Сотрудника с минимальной зарплатой.
+        System.out.println(EmployeeBook.findEmployeeMinSalary(employee,1).getFio());
+
+        //Параметр номер отдела.Сотрудника с максимальной зарплатой.
+        System.out.println(EmployeeBook.findEmployeeMaxSalary(employee,2).getFio());
+
+        //Сумму затрат на зарплату по отделу.
+        System.out.println(EmployeeBook.calculationMonthlySalary(employee,1));
+
+        //Среднюю зарплату по отделу.
+        System.out.println(EmployeeBook.averageValueSalary(employee,4));
+
+        //Проиндексировать зарплату всех сотрудников отдела на процент,
+        // который приходит в качестве параметра.
+        EmployeeBook.indexSalary(employee,1,10);
+        EmployeeBook.soutEmployee(employee);
+
+        //Напечатать всех сотрудников отдела (все данные, кроме отдела).
+        EmployeeBook.soutEmployeeDepartment(employee,5);
+
+        //Получить в качестве параметра число и найти всех сотрудников с зарплатой меньше числа.
+        EmployeeBook.findEmployeesWithSalaryLess(employee,100000);
+
+        //Получить в качестве параметра число и найти всех сотрудников с зарплатой больше числа.
+        EmployeeBook.findEmployeesWithSalaryMore(employee,100000);
     }
 }
